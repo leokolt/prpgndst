@@ -1,0 +1,16 @@
+<footer class="site-footer">
+    <div class="site-footer-top">
+        {{#if @site.secondary_navigation}}
+            {{navigation type="secondary"}}
+        {{/if}}
+    </div>
+    
+    <div class="site-footer-bottom">
+        <div class="copyright">
+            &copy; {{date format="YYYY"}} {{@site.title}} 
+        </div>
+        <div class="attribution">
+            {{t "Published with"}} <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> &amp; <a href="https://stylesheets.dev/themes/ghost/sapphire/" target="_blank">Sapphire</a>
+        </div>
+    </div>
+</footer>

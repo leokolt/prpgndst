@@ -1,0 +1,17 @@
+{{#if isSecondary}}
+    <nav class="secondary-nav" aria-label="Secondary">
+        <ul class="nav">
+            {{#foreach navigation}}
+                <li class="{{link_class for=(url) class=(concat "nav-" slug)}}"><a href="{{url absolute="true"}}">{{label}}</a><span class="middot" aria-hidden="true">&middot;</span></li>
+            {{/foreach}}
+        </ul>
+    </nav>
+{{else}}
+    <nav class="site-nav" aria-label="Primary">
+        <ul class="nav">
+            {{#foreach navigation}}
+                <li class="{{link_class for=(url) class=(concat "nav-" slug)}}"><a href="{{url absolute="true"}}">{{label}}</a></li>
+            {{/foreach}}
+        </ul>
+    </nav>
+{{/if}}

@@ -1,0 +1,56 @@
+/* Variables
+/* ---------------------------------------------------------- */
+
+:root {
+    /* Colors */
+    --color-primary: #222222;
+    --color-primary-lighter: color-mod(var(--color-primary) tint(35%));
+    --color-text: color-mod(var(--color-text-bold) l(30%));
+    --color-text-secondary: #757575;
+    --color-text-bold: #222;
+
+    --color-bg: #ffffff;
+    --color-bg-secondary: color-mod(var(--color-bg) shade(4%));
+    --color-border: #e7e7e7;
+    --color-border-lighter: #f1f1f1;
+
+    /* Fonts */
+    --font-primary: 'Work Sans', -apple-system, blinkmacsystemfont, 'Segoe UI',
+        'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif;
+    --font-secondary: 'Merriweather', georgia, times, serif;
+    --font-normal: 400;
+    --font-bold: 700;
+}
+
+/* Color scheme: Dark */
+:root.color-scheme--dark {
+    --color-primary: #f1f1f1;
+    --color-primary-lighter: #adadad;
+    --color-text: #dadada;
+    --color-text-secondary: #dadada;
+    --color-text-bold: #f1f1f1;
+    --color-bg: #232323;
+    --color-bg-secondary: #313131;
+    --color-border: #424242;
+    --color-border-lighter: #424242;
+}
+
+/* Color scheme: Warm */
+:root.color-scheme--warm {
+    --color-primary: #222222;
+    --color-primary-lighter: #717171;
+    --color-text: #333333;
+    --color-text-secondary: #645f4b;
+    --color-text-bold: #222222;
+    --color-bg: #fcf5de;
+    --color-bg-secondary: #f7efd6;
+    --color-border: #e1d7b7;
+    --color-border-lighter: #e1d7b7;
+}
+
+/* Breakpoints */
+$breakpoint-small: 640px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
+$breakpoint-xlarge: 1280px;
+$breakpoint-xxlarge: 1400px;

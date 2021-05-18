@@ -1,0 +1,44 @@
+{{!< default}}
+
+{{#author}}
+    <header class="author-header {{#if cover_image}}author-header--with-image{{/if}}" style="background-image: url({{cover_image}});">
+        <div class="author-header-wrapper">
+            {{#if profile_image}}
+                <img class="author-header-image" src="{{profile_image}}" alt="{{name}}" />
+            {{/if}}
+
+            <h1>{{name}}</h1>
+
+            {{#if bio}}
+                <p>{{bio}}</p>
+            {{/if}}
+
+            {{#if location}}
+                <div class="author-header-location">
+                    <span aria-hidden="true">{{> "icons/globe"}}</span>
+                    <span>{{location}}</span>
+                </div>
+            {{/if}}
+
+            <ul class="author-header-meta social-media-icons">
+                {{#if website}}
+                    <li><a href="{{website}}" target="_blank" rel="noopener" title="{{t "Website"}}">{{> "icons/link"}}</a></li>
+                {{/if}}
+                {{#if twitter}}
+                    <li><a href="{{twitter_url}}" target="_blank" rel="noopener" title="{{t "Twitter"}}">{{> "icons/twitter"}}</a></li>
+                {{/if}}
+                {{#if facebook}}
+                    <li><a href="{{facebook_url}}" target="_blank" rel="noopener" title="{{t "Facebook"}}">{{> "icons/facebook"}}</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </header>
+{{/author}}
+
+<div class="post-feed">
+    {{#foreach posts}}
+        {{> "post-card"}}
+    {{/foreach}}
+</div>
+
+{{pagination}}

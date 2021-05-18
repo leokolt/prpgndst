@@ -1,0 +1,29 @@
+{
+    "extends":[
+        "stylelint-config-standard"
+    ],
+    "plugins":[
+        "stylelint-prettier"
+    ],
+    "rules":{
+        "prettier/prettier":true,
+        "at-rule-no-unknown":[
+            true,
+            {
+                "ignoreAtRules":[
+                    "include",
+                    "extend",
+                    "if",
+                    "each",
+                    "content",
+                    "mixin"
+                ]
+            }
+        ],
+        "color-hex-length":null,
+        "declaration-colon-newline-after": null,
+        "indentation": 4,
+        "value-list-comma-newline-after": null,
+        "no-eol-whitespace": null,
+    }
+}

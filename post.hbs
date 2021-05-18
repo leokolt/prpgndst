@@ -1,0 +1,76 @@
+{{!< default}}
+
+{{#post}}
+
+<article class="article-full {{post_class}}">
+    <header class="post-header">
+        {{#if feature_image}}
+            <img class="post-feature-image"
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(max-width: 1000px) 1000px, 2000px"
+                loading="lazy"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{title}}"
+            />
+        {{/if}}
+
+        <div class="post-header-content">
+            <h1 class="post-title">{{title}}</h1>
+            <time datetime="{{date format="YYYY-MM-DD"}}">{{t "Published on"}} {{date format="D MMM YYYY"}}</time>
+        </div>
+    </header>
+
+    <div class="post-content">
+        {{content}}
+    </div>
+
+    <footer class="post-footer">
+        <div class="post-footer-row">
+            <div class="post-widget post-author-widget">
+                <span class="widget-label">{{t "Written by"}}</span>
+                {{#foreach authors}}
+                    {{> "author-card"}}
+                {{/foreach}}
+            </div>
+        </div>
+        <div class="post-footer-row">
+            {{#if tags}}
+            <div class="post-widget post-tags-widget">
+                <span class="widget-label">{{t "Published in"}}</span>
+                {{tags}}
+            </div>
+            {{/if}}
+
+            <div class="post-widget {{#if tags}}post-widget--align-right{{/if}} post-share-widget">
+                <span class="widget-label">{{t "Share"}}</span>
+                {{> "social-media-sharing-icons"}}
+            </div>
+        </div>
+        <div class="post-footer-row post-readmore">
+            <div class="post-widget post-readmore-widget">
+                {{#next_post}}
+                    <span class="widget-label">{{t "Next post"}}</span>
+                    <a href="{{url}}"><h4>{{title}}</h4></a>
+                {{/next_post}}
+            </div>
+            <div class="post-widget post-readmore-widget post-readmore-widget--prev">
+                {{#prev_post}}
+                    <span class="widget-label">{{t "Previous post"}}</span>
+                    <a href="{{url}}"><h4>{{title}}</h4></a>
+                {{/prev_post}}
+            </div>
+        </div>
+        {{!--  
+        <div class="post-widget post-comments-widget post-widget--no-margin">
+            If you want to embed comments, this is a good place to do it!
+        </div>
+        --}}
+    </footer>
+</article>
+
+{{/post}}
+
+{{> "subscribe-cta"}}

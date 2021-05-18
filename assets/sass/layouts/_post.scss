@@ -1,0 +1,289 @@
+/* Post Template
+/* -------------------------------------------------------- */
+
+//....
+
+/* Typography --------------------------------------------- */
+
+.post-content {
+    font-size: 1.7rem;
+
+    @media (min-width: $breakpoint-xlarge) {
+        font-size: 1.8rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--color-text-bold);
+    }
+
+    h1 {
+        font-size: 2.8rem;
+        margin: 0 0 0.8em;
+
+        @media (min-width: $breakpoint-xlarge) {
+            font-size: 3.8rem;
+        }
+    }
+
+    h2 {
+        font-size: 2.6rem;
+        margin: 0 0 0.8em;
+
+        @media (min-width: $breakpoint-xlarge) {
+            font-size: 3.2rem;
+        }
+    }
+
+    h3 {
+        font-size: 2.3rem;
+        margin: 0 0 0.8em;
+
+        @media (min-width: $breakpoint-xlarge) {
+            font-size: 2.4rem;
+        }
+    }
+
+    h4 {
+        font-size: 1.8rem;
+        margin: 0 0 0.8em;
+
+        @media (min-width: $breakpoint-xlarge) {
+            font-size: 2rem;
+        }
+    }
+
+    h5 {
+        font-size: 1.6rem;
+        margin: 0 0 0.8em;
+
+        @media (min-width: $breakpoint-xlarge) {
+            font-size: 1.8rem;
+        }
+    }
+
+    h6 {
+        font-size: 1.4rem;
+        margin: 0 0 0.8em;
+
+        @media (min-width: $breakpoint-xlarge) {
+            font-size: 1.6rem;
+        }
+    }
+
+    p {
+        + h2,
+        + h3,
+        + h4,
+        + h5,
+        + h6 {
+            margin: 1.9em 0 0.8em;
+        }
+    }
+
+    p {
+        margin: 0 0 2.4em;
+        line-height: 1.735;
+    }
+
+    a {
+        color: var(--color-primary);
+        border-bottom: 2px solid;
+        font-weight: bold;
+
+        &:hover {
+            color: var(--color-primary-lighter);
+        }
+    }
+
+    .button--primary {
+        background: var(--color-primary);
+        color: var(--color-bg);
+        border-color: var(--color-primary);
+
+        &:hover {
+            color: var(--color-bg);
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+    }
+
+    .button--secondary {
+        background: var(--color-bg);
+        color: var(--color-primary);
+
+        &:hover {
+            color: var(--color-primary);
+            background: var(--color-bg-secondary);
+        }
+    }
+
+    blockquote {
+        p {
+            font-size: 2.2rem;
+            line-height: 1.6;
+        }
+
+        @media (min-width: $breakpoint-xlarge) {
+            p {
+                font-size: 2.4rem;
+            }
+        }
+    }
+
+    ul,
+    ol {
+        margin: 0 0 2.4em;
+        padding: 0 0 0 1em;
+        line-height: 1.6em;
+    }
+
+    ul {
+        list-style: disc;
+    }
+
+    ol {
+        list-style: decimal;
+    }
+
+    li {
+        margin: 0 0 0.6em;
+
+        &::marker {
+            color: var(--color-primary);
+        }
+    }
+
+    li > ul,
+    li > ol {
+        margin: 1em 0;
+    }
+
+    li > ul {
+        list-style: circle;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0px 0px 2.4em;
+        text-align: left;
+        font-size: 1.8rem;
+
+        caption {
+            color: var(--color-text-secondary);
+            font-size: 1.6rem;
+            margin-bottom: 0.9375em;
+            text-align: left;
+        }
+
+        th {
+            border-bottom: 1px solid var(--color-border);
+            padding: 0.5em 5px;
+            font-weight: var(--font-bold);
+            color: var(--color-text-bold);
+        }
+
+        td {
+            border-bottom: 1px solid var(--color-border);
+            padding: 0.5em 5px;
+        }
+    }
+
+    > .container--boxed > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Ghost Embed Cards -------------------------------------- */
+
+.kg-card {
+    margin: 0 0 2.4em;
+
+    figcaption {
+        text-align: center;
+        font-size: 1.4rem;
+        padding: 8px 0 0;
+        color: var(--color-text-secondary);
+    }
+}
+
+.kg-image-card {
+    img {
+        border-radius: 4px;
+        margin: auto;
+    }
+
+    &.kg-width-full img {
+        border-radius: 0;
+    }
+
+    &.kg-width-wide {
+        @media (min-width: $breakpoint-xxlarge) {
+            margin-left: -5em;
+            margin-right: -5em;
+        }
+    }
+}
+
+.kg-embed-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Galleries ---------------------------------------------- */
+
+.kg-gallery-card + .kg-gallery-card {
+    margin-top: 0.75em;
+}
+
+.kg-gallery-container {
+    position: relative;
+}
+
+.kg-gallery-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.kg-gallery-image img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.kg-gallery-row:not(:first-of-type) {
+    margin: 0.75em 0 0 0;
+}
+
+.kg-gallery-image:not(:first-of-type) {
+    margin: 0 0 0 0.75em;
+}
+
+/* Footer ------------------------------------------------- */
+
+.post-footer-row {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $breakpoint-medium) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.post-share-widget {
+    .social-media-icons a {
+        width: 22px;
+    }
+}
+

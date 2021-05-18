@@ -1,0 +1,20 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-text-secondary);
+
+    a {
+        font-family: var(--font-secondary);
+        font-weight: var(--font-bold);
+    }
+
+    .page-number {
+        display: none;
+        font-size: 1.7rem;
+
+        @media (min-width: $breakpoint-small) {
+            display: block;
+        }
+    }
+}

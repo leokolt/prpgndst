@@ -1,0 +1,24 @@
+{{!< default}}
+
+{{#tag}}
+    <header class="tag-header {{#if feature_image}}tag-header--with-image{{/if}}" style="background-image: url({{feature_image}});">
+        <div class="tag-header-wrapper">
+            <h1>{{name}}</h1>
+            <p>
+                {{#if description}}
+                    {{description}}
+                {{else}}
+                    {{plural ../pagination.total empty=(t 'A collection of posts') singular=(t 'A collection of % post') plural=(t 'A collection of % posts')}}
+                {{/if}}
+            </p>
+        </div>
+    </header>
+{{/tag}}
+
+<div class="post-feed">
+    {{#foreach posts}}
+        {{> "post-card"}}
+    {{/foreach}}
+</div>
+
+{{pagination}}

@@ -1,0 +1,29 @@
+.skip-link {
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    color: var(--color-bg);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+    &:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+        outline: none;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+    }
+}

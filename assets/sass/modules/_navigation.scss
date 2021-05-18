@@ -1,0 +1,41 @@
+/* Navigations 
+/* -------------------------------------------------------- */
+
+.site-nav {
+    ul {
+        list-style: none;
+    }
+
+    li {
+        &.nav-current {
+        }
+    }
+}
+
+/* Secondary Nav ------------------------------------------ */
+
+.secondary-nav {
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .middot {
+        display: none;
+    }
+
+    li:last-child .middot {
+        display: none;
+    }
+
+    @media (min-width: $breakpoint-large) {
+        ul {
+            flex-direction: row;
+        }
+
+        .middot {
+            display: block;
+        }
+    }
+}
