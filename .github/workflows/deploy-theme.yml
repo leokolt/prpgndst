@@ -1,0 +1,15 @@
+name: Deploy Theme
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - name: Git local
+        uses: TryGhost/action-deploy-theme@v1.4.0
+        with:
+          api-url: $
+          api-key: $
