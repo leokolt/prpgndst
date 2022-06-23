@@ -1,32 +1,62 @@
-<header class="site-header padding--default">
-    <div class="site-branding">
-        <a class="site-logo" href="{{@site.url}}">
-            {{#if @site.logo}}
-                <img class="site-logo-image" src="{{@site.logo}}" alt="{{@site.title}}" />
-            {{else}}
-                {{@site.title}}
-            {{/if}}
-        </a>
+<header class="head">
+    <div class="head__inner wrapper">
+
+        <div class="head__brand">
+            <a class="head__logo" href="{{@site.url}}">
+                {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
+                {{else}}
+                   <h1 class="head__brand-title">{{@site.title}}</h1>
+                {{/if}}
+            </a>
+            <div class="head__right">
+                <a class="donate donate--desktop-hide" href="/donate" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="none" d="M0 0h256v256H0z"/><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" d="M56 184h88M88 216V40h60a52 52 0 0 1 0 104H56"/></svg>
+                    <span>Поддержать</span>
+                </a>
+                <a class="burger" role="button">
+                    <div class="burger__box">
+                        <div class="burger__inner"></div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <div class="head__menu">
+            {{navigation}}
+
+             <div class="head__menu-secondary menu-secondary">
+                <div class="menu-secondary__button" role="button">
+                    <svg width="16" height="14" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-three-dots"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+                </div>
+                <div class="menu-secondary__dropdown">
+                    {{navigation type="secondary"}}
+                </div>
+             </div>
+
+        </div>
+
+        <div class="head__actions">
+            <a class="donate donate--mobile-hide" href="/donate" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="none" d="M0 0h256v256H0z"/><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" d="M56 184h88M88 216V40h60a52 52 0 0 1 0 104H56"/></svg>
+                <span>Поддержать</span>
+             </a>
+            <div class="head__search">
+                <div class="head__search-icon" role="button">
+                    <svg><g fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" transform="translate(1 1)"><circle cx="7.5" cy="7.5" r="7.5"/><path d="m18 18-5.2-5.2"/></g></svg>
+                </div>
+            </div>
+            <div class="head__nightshift">
+                <div class="head__nightshift-toggle" data-ember-action="" data-ember-action-158="158">
+                    <div class="sun">
+                        <svg viewBox="0 0 24 24"><defs><style>.sun_svg__a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}</style></defs><circle class="sun_svg__a" cx="12" cy="12" r="4.5"></circle><path class="sun_svg__a" d="M12 .75V4.5M12 19.5v3.75M23.25 12H19.5M4.5 12H.75M20.25 3.75l-3 3M6.75 17.25l-3 3M20.25 20.25l-3-3M6.75 6.75l-3-3"></path></svg>
+                    </div>
+                    <div class="moon">
+                        <svg viewBox="0 0 24 24"><path d="M12.248 11.959A11.254 11.254 0 004.373 1.226a11.25 11.25 0 110 21.466 11.253 11.253 0 007.875-10.733z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="thumb"></div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <button type="button" class="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    {{#if @site.description}}
-        <p class="site-tagline">{{@site.description}}</p>
-    {{/if}}
-    
-    {{navigation}}
-
-    {{> "social-media-icons"}}
-    {{> "color-mode-toggle"}}
 </header>
-
-<div class="hamburger-menu">
-    {{navigation}}
-    {{> "social-media-icons"}}
-    {{> "color-mode-toggle"}}
-</div>

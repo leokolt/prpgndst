@@ -2,10 +2,10 @@
 
 {{#post}}
 
-<article class="article-full {{post_class}}">
-    <header class="post-header">
+<article class="page {{post_class}}">
+    <header class="page__header wrapper">
         {{#if feature_image}}
-            <img class="post-feature-image"
+            <img class="page__feature-image"
                 srcset="{{img_url feature_image size="s"}} 300w,
                         {{img_url feature_image size="m"}} 600w,
                         {{img_url feature_image size="l"}} 1000w,
@@ -17,14 +17,16 @@
             />
         {{/if}}
 
-        <div class="post-header-content">
-            <h1 class="post-title">{{title}}</h1>
+        <div class="page__header-content">
+            <h1 class="page__title">{{title}}</h1>
         </div>
     </header>
 
-    <div class="post-content">
-        {{content}}
-    </div>
+    <section class="page__content">
+        <div class="page__content-inner view">
+            {{content}}
+        </div>
+    </section>
 </article>
 
 {{/post}}

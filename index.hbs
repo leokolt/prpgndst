@@ -1,9 +1,177 @@
 {{!< default}}
 
-<div class="post-feed">
-    {{#foreach posts}}
-        {{> "post-card"}}
-    {{/foreach}}
+{{> "top-post"}}
+
+<div class="front-header">
+    <div class="front-header__inner wrapper">
+        <p class="front-header__date">
+            Сегодня, {{date published_at format="D MMMM YYYY"}}
+        </p>
+        <div class="front-header__view"  role="button">
+            <span>Статьи по порядку</span>
+            <div class="front-header__toggle">
+                <div class="thumb"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-{{pagination}}
+<div class="front-section">
+
+    {{#if @custom.top_post}}
+
+    {{#get "posts" filter="tags:-[hash-self, hash-top]+featured:false" include="tags,authors"}}
+
+    <section class="post-feed">
+        <div class="post-feed__inner wrapper">
+        {{#foreach posts to="8"}}
+            {{> "loop-top"}}
+        {{/foreach}}
+       </div>
+    </section>
+
+    {{/get}}
+
+    {{else}}
+
+    {{#get "posts" filter="tags:-[hash-self]+featured:false" include="tags,authors"}}
+
+    <section class="post-feed">
+        <div class="post-feed__inner wrapper">
+        {{#foreach posts to="8"}}
+            {{> "loop-top"}}
+        {{/foreach}}
+        </div>
+    </section>
+
+    {{/get}}
+
+    {{/if}}
+
+    {{#match @custom.banners "Both"}}
+    <section class="banners">
+        <div class="banners__inner wrapper">
+            {{> "parts/tg-banner"}}
+            {{> "parts/donate-banner"}}
+        </div>
+    </section>
+    {{/match}}
+    {{#match @custom.banners "Telegram"}}
+    <section class="banners">
+        <div class="banners__inner wrapper">
+            {{> "parts/tg-banner"}}
+        </div>
+    </section>
+    {{/match}}
+    {{#match @custom.banners "Donate"}}
+    <section class="banners">
+        <div class="banners__inner wrapper">
+            {{> "parts/donate-banner"}}
+        </div>
+    </section>
+    {{/match}}
+
+    {{> "topic"}}
+
+    {{> "post-slider"}}
+
+    {{#get "posts" filter="tags:hash-self" include="tags,authors" limit="9" as |selected|}}
+
+    {{#if selected}}
+
+    <section class="selected">
+
+        <div class="selected__inner wrapper">
+
+            <h3 class="selected__title">
+                <a href="/editorials">
+                    Статьи редакции
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.225 20.775 24 12l-8.775-8.775-1.498 1.407 6.421 6.267H0v2.202h20.148l-6.421 6.267 1.498 1.407Z"></path></svg>
+                </a>
+            </h3>
+
+            <div class="selected__posts">
+
+            {{#foreach posts}}
+
+                {{> "selected-post"}}
+
+            {{/foreach}}
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {{/if}}
+
+    {{/get}}
+
+    {{#if @custom.tags_posts}}
+
+    <section class="tags-posts">
+
+        <div class="tags-posts__inner wrapper">
+            {{#get "tags" filter="slug:[{{@custom.tags_posts}}]"}}
+
+            {{> "tags-posts"}}
+
+            {{/get}}
+        </div>
+
+    </section>
+
+    {{else}}
+
+    <section class="tags-posts">
+
+        <div class="tags-posts__inner wrapper">
+            {{#get "tags" include="count.posts" limit="3" order="count.posts desc"}}
+
+            {{> "tags-posts"}}
+
+            {{/get}}
+        </div>
+
+    </section>
+
+    {{/if}}
+
+    {{#get "posts" filter="tags:-[hash-self]+featured:false" include="tags,authors"}}
+
+    <section class="post-bottom">
+        <div class="post-bottom__inner wrapper">
+            {{#foreach posts from="9"}}
+                {{> "loop-bottom"}}
+            {{/foreach}}
+        </div>
+    </section>
+
+    {{/get}}
+
+</div>
+
+<div class="front-archive">
+    <section class="loop-archive">
+        <div class="loop-archive__inner view">
+            {{#foreach posts}}
+                {{> "loop-archive"}}
+            {{/foreach}}
+        </div>
+    </section>
+    {{pagination}}
+</div>
+
+<section class="loop-source">
+    <div class="loop-source__inner wrapper">
+        {{> "loop-source"}}
+    </div>
+</section>
+
+<section class="loop-tags">
+    <div class="loop-tags__inner wrapper">
+        <h3 class="loop-tags__title">Важные темы</h3>
+        {{> "loop-tag"}}
+    </div>
+</section>

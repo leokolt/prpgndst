@@ -1,0 +1,46 @@
+.cookie-alert {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    bottom: 15px;
+    left: 1%;
+    max-width: 95%;
+    padding: 20px;
+    background-color: var(--color-bg);
+    border-radius: 5px;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.4);
+    align-items: center;
+
+    &.show {
+        display: flex;
+    }
+
+    @media(min-width: $breakpoint-m) {
+        max-width: 60%;
+    }
+
+    @media(min-width: $breakpoint-l) {
+        max-width: 40%;
+    }
+
+    p {
+        font-family: var(--font-secondary);
+        margin: 0;
+        font-size: 0.7rem;
+        text-align: left;
+        color: var(--color-primary);
+        margin-right: 10px;
+
+        a {
+            color: var(--color-accent);
+        }
+    }
+
+    &__accept {
+        width:20%;
+        text-align: center;
+        background-color: var(--color-bg-secondary);
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+}

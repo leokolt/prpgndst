@@ -1,0 +1,28 @@
+.tag-header {
+    padding: 0 20px;
+}
+
+.tag-header__inner {
+    h1 {
+        display: inline-block;
+    }
+
+    span {
+        vertical-align: top;
+        color: var(--color-accent);
+        font-weight: 500;
+    }
+
+    p {
+        margin-top: 30px;
+        max-width: 100%;
+        font-style: italic;
+        margin-bottom: 30px;
+
+        @media(min-width: $breakpoint-l) {
+            max-width: 50%;
+        }
+    }
+
+
+}

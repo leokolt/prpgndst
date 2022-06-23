@@ -1,0 +1,117 @@
+
+.topic {
+    position: relative;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 50px 20px;
+    margin-top: 50px;
+    margin-bottom: -50px;
+
+    &:after {
+        content: "";
+        position: absolute;
+        background: rgba(15,15,15,.7);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        transition: all .3s ease-out;
+    }
+
+    &__inner {
+        position: relative;
+        z-index: 99;
+    }
+
+    &__title {
+        color: var(--color-accent);
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .post-feed__item-title {
+        color: #f1f1f1;
+        transition: $transition;
+
+        &:hover  {
+            opacity: .85;
+        }
+    }
+
+    p {
+        color: #f1f1f1;
+        margin-top: 20px;
+        font-size: 90%;
+    }
+}
+
+.topic__posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+    grid-template-areas:
+        "One"
+        "two"
+        "three"
+        "four"
+        "five"
+        "six"
+        "seven";
+
+    @media (min-width: $breakpoint-m) { //768
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "One One two two"
+            "three three four four"
+            "five five five five"
+            "six six seven seven";
+    }
+
+    @media (min-width: $breakpoint-xl) { //1280
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "One two two"
+            "One three three"
+            "four five five"
+            "four six seven";
+    }
+
+    .post-feed__item {
+        background-color: rgba(0,0,0,.2);
+        padding: 30px;
+        border-radius: 5px;
+
+        &.topic-1 {
+            grid-area: One;
+        }
+
+        &.topic-2 {
+            grid-area: two;
+        }
+
+        &.topic-3 {
+            grid-area: three;
+        }
+
+        &.topic-4 {
+            grid-area: four;
+        }
+
+        &.topic-5 {
+            grid-area: five;
+        }
+
+        &.topic-6 {
+            grid-area: six;
+        }
+
+        &.topic-7 {
+            grid-area: seven;
+        }
+    }
+}

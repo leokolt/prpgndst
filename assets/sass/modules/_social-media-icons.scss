@@ -1,28 +1,69 @@
-.social-media-icons {
+.share-post {
+    display: flex;
+    padding: 0 20px;
+
+    @media (min-width: $breakpoint-m) {
+        padding: 0;
+    }
+}
+
+.share__item {
+    background-color: var(--color-bg-secondary);
+    flex: 1;
+    font-size: 15px;
+    font-weight: 700;
+    height: 40px;
+    transition: $transition;
     display: flex;
     align-items: center;
-
-    li {
-        margin: 0 8px 0 0;
-
-        &:last-child {
-            margin: 0;
-        }
-    }
-
-    a {
-        display: block;
-        width: 25px;
-        height: 25px;
-        color: var(--color-primary);
-
-        &:hover {
-            color: var(--color-primary-lighter);
-        }
-    }
+    justify-content: center;
+    border-radius: 5px;
 
     svg {
-        width: 100%;
-        height: 100%;
+        width: 20px;
+        height: 20px;
+        fill: var(--color-primary)
     }
+
+    &:hover {
+        opacity: .8;
+    }
+
+    & + & {
+        margin-left: 15px;
+    }
+
+    &--link {
+        overflow: hidden;
+        position: relative;
+
+        svg {
+            transition: $transition;
+            position: absolute;
+        }
+
+        &.copied {
+            .link-copied {
+                display: block;
+                transform: translateY(0);
+            }
+
+            .link {
+                transform: translateY(150%);
+
+            }
+        }
+    }
+}
+
+.link-copied {
+    transform: translateY(-150%);
+    transition: $transition;
+    width: 20px;
+    height: 20px;
+}
+
+.input-link {
+    position: absolute;
+    left: -999999px;
 }

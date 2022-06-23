@@ -1,0 +1,56 @@
+{{#if @custom.topic_tags}}
+
+    {{#get "posts" include="tags,authors" filter="tags:[{{@custom.topic_tags}}]+tags:-[hash-self]" limit="7" order="published_at desc"}}
+
+    <section class="topic"
+
+        {{#if @custom.topic_background_image}}
+            style="background-image: url({{@custom.topic_background_image}});"
+        {{else}}
+            style="background-image: url({{#foreach posts}}{{#has number="1"}}{{img_url feature_image}}{{/has}}{{/foreach}});"
+        {{/if}}
+        >
+            <div class="topic__inner wrapper">
+
+                <h3 class="topic__title">
+                    {{#if @custom.topic}}{{@custom.topic}}{{/if}}
+                </h3>
+
+                <div class="topic__posts">
+
+
+                    {{#foreach posts}}
+                    <article class="post-feed__item {{post_class}} topic-{{@number}}">
+                        <div class="post-feed__item-content">
+
+                            <a class="post-feed__item-link" href="{{url}}">
+                                <h2 class="post-feed__item-title">{{title}}</h2>
+                            </a>
+
+                            {{#has number="1,4"}}
+                                <p>{{excerpt}}</p>
+                            {{/has}}
+
+                            <div class="post-feed__item-meta">
+                                {{#primary_author}}
+                                    <a class="post-feed__item-author post-author__link" href="{{url}}">
+                                        {{name}}
+                                    </a> ★
+                                {{/primary_author}}
+                                <span class="post-feed__item-date">
+                                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                    {{/foreach}}
+
+                </div>
+
+            </div>
+    </section>
+
+    {{/get}}
+
+
+{{/if}}

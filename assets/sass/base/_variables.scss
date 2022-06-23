@@ -3,54 +3,44 @@
 
 :root {
     /* Colors */
-    --color-primary: #222222;
-    --color-primary-lighter: color-mod(var(--color-primary) tint(35%));
+    --color-primary: #121212;
+    --color-primary-lighter: color-mod(var(--color-primary) tint(20%));
     --color-text: color-mod(var(--color-text-bold) l(30%));
     --color-text-secondary: #757575;
     --color-text-bold: #222;
-
-    --color-bg: #ffffff;
-    --color-bg-secondary: color-mod(var(--color-bg) shade(4%));
-    --color-border: #e7e7e7;
-    --color-border-lighter: #f1f1f1;
+    --color-accent: #f83435;
+    --color-bg-secondary: #e7e7e7;
+    --color-bg-primary: #ffffff;
+    --color-bg: #f5f6f7;
 
     /* Fonts */
-    --font-primary: 'Work Sans', -apple-system, blinkmacsystemfont, 'Segoe UI',
-        'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif;
-    --font-secondary: 'Merriweather', georgia, times, serif;
+    --font-main: Georgia, Iowan Old Style, Droid Serif, Times;
+    --font-secondary: Kelson Sans, "Segoe UI", Roboto Condensed, Helvetica, Arial, sans-serif;
+	--font-mono:  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --font-normal: 400;
     --font-bold: 700;
 }
 
 /* Color scheme: Dark */
-:root.color-scheme--dark {
+:root[color-mode="dark"] {
     --color-primary: #f1f1f1;
     --color-primary-lighter: #adadad;
     --color-text: #dadada;
     --color-text-secondary: #dadada;
     --color-text-bold: #f1f1f1;
-    --color-bg: #232323;
-    --color-bg-secondary: #313131;
+    --color-bg: #1a1a1a;
+    --color-bg-secondary: #282828;
+    --color-bg-primary: #232323;
     --color-border: #424242;
     --color-border-lighter: #424242;
 }
 
-/* Color scheme: Warm */
-:root.color-scheme--warm {
-    --color-primary: #222222;
-    --color-primary-lighter: #717171;
-    --color-text: #333333;
-    --color-text-secondary: #645f4b;
-    --color-text-bold: #222222;
-    --color-bg: #fcf5de;
-    --color-bg-secondary: #f7efd6;
-    --color-border: #e1d7b7;
-    --color-border-lighter: #e1d7b7;
-}
-
 /* Breakpoints */
-$breakpoint-small: 640px;
-$breakpoint-medium: 768px;
-$breakpoint-large: 1024px;
-$breakpoint-xlarge: 1280px;
-$breakpoint-xxlarge: 1400px;
+$breakpoint-s: 640px;
+$breakpoint-m: 768px;
+$breakpoint-l: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1400px;
+
+/*others*/
+$transition: .3s all ease-out;

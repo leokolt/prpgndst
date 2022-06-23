@@ -1,0 +1,45 @@
+.loop-source {
+    margin: 70px 0;
+    padding: 0 20px;
+
+    &__items {
+        -ms-overflow-style: none;  /* IE и Edge */
+        scrollbar-width: none;  /* Firefox */
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__item {
+        margin: auto;
+
+        & + & {
+            margin-left: 40px;
+        }
+    }
+
+    &__item-link {
+        transition: $transition;
+
+        &:hover .loop-source__item-title {
+            color: #838383;
+        }
+
+    }
+
+    &__item-title {
+        color: #ccc;
+        font-size: calc(1.2 * .011 * 100vw + 1.284rem);
+        overflow-wrap: normal;
+        white-space: pre-wrap;
+        word-break: keep-all;
+        transition: $transition;
+        text-align: center;
+
+        @media(min-width: $breakpoint-m) {
+            text-align: inherit;
+        }
+    }
+
+}

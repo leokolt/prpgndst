@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<rss
+  xmlns:yandex="http://news.yandex.ru"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:turbo="http://turbo.yandex.ru"
+  version="2.0">
+<channel>
+<title><![CDATA[ {{@site.title}} ]]></title>
+<description><![CDATA[ {{@site.description}} ]]></description>
+<link>{{@site.url}}</link>
+<language>ru</language>
+<turbo:analytics type="Google" id="UA-######"></turbo:analytics>
+<turbo:analytics type="Yandex" id="88728677"></turbo:analytics>
+<image>
+    <url>{{@site.url}}/favicon.png</url>
+    <title>{{@site.title}}</title>
+    <link>{{@site.url}}</link>
+</image>
+<lastBuildDate>{{date format="YYYY-MM-DD HH:mm:ss ZZ"}}</lastBuildDate>
+
+{{#get "posts" filter="tags:-[en]" limit="all"}}
+    {{#foreach posts}}
+    <item turbo="true">
+        <title><![CDATA[ {{title}} ]]></title>
+        <link>{{url absolute="true"}}</link>
+        <turbo:topic><![CDATA[ {{title}} ]]></turbo:topic>
+        <turbo:source>{{url absolute="true"}}</turbo:source>
+        <author><![CDATA[ {{primary_author.name}} ]]></author>
+        <pubDate>{{date format="YYYY-MM-DD HH:mm:ss ZZ"}}</pubDate>
+        <media:content url="{{feature_image}}" medium="image"/>
+        <turbo:content><![CDATA[ {{content}} ]]></turbo:content>
+    </item>
+    {{/foreach}}
+{{/get}}
+
+</channel>
+</rss>

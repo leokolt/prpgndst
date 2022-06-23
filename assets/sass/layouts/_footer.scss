@@ -1,0 +1,136 @@
+.foot {
+    background-color: #121212;
+    color: #e7e7e7;
+    padding: 50px 20px 0;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        @media(min-width: $breakpoint-l) {
+            flex-direction: row;
+            text-align: inherit;
+        }
+    }
+
+    &__brand {
+        max-width: 100%;
+        margin: auto;
+
+        @media(min-width: $breakpoint-l) {
+            max-width: 25%;
+            margin: initial;
+        }
+
+        &-title {
+            font-size: calc(0.7 * .011 * 100vw + 1.284rem);
+            color: #e7e7e7;
+            line-height: 1;
+            font-family: var(--font-secondary);
+        }
+
+        .donate {
+            margin-bottom: 15px;
+
+            span {
+                display: block;
+            }
+        }
+
+        .tg, .rss {
+            margin-bottom: 15px;
+            display: flex;
+            color: #121212;
+            font-size: 14px;
+            padding: 8px 8px 5px;
+            border-radius: 5px;
+            transition: $transition;
+            background-color: #b4e6ff;
+
+            &:hover {
+                opacity: .8;
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            span {
+                margin-left: 5px;
+            }
+
+        }
+
+        .rss {
+            background-color: #FFA500;
+        }
+    }
+
+    &__logo {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    &__content {
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 30px;
+
+        @media(min-width: $breakpoint-l) {
+            max-width: 75%;
+            margin-left: 70px;
+            margin-top: 0;
+        }
+
+        p {
+            margin-top: 25px;
+            font-size: 80%;
+            color: #4d4d4d;
+
+            a {
+                color: var(--color-accent);
+            }
+        }
+    }
+
+    &__menu {
+        a {
+            color: #e7e7e7;
+            transition: $transition;
+
+            &:hover {
+                opacity: .85;
+            }
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            @media(min-width: $breakpoint-l) {
+                flex-direction: row;
+            }
+
+            li {
+                margin-right: 20px;
+            }
+        }
+
+    }
+
+    &__copyright {
+        padding: 50px 20px 20px;
+
+        &-text {
+            text-align: center;
+            font-size: 80%;
+            font-family: var(--font-secondary);
+        }
+    }
+
+
+
+}

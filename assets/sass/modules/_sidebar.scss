@@ -1,0 +1,135 @@
+.latest-post {
+    counter-reset: post;
+
+    h5 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f83435;
+        display: inline-block;
+    }
+
+    &__item {
+        position: relative;
+
+        h6 {
+            display: inline;
+            font-size: calc(0.8 * .005 * 100vw + .917rem);
+        }
+
+        a {
+            color: var(--color-primary);
+            transition: $transition;
+
+            &:hover {
+                opacity: .85;
+            }
+        }
+
+        & + & {
+            margin-top: 20px;
+        }
+
+        &:before {
+            counter-increment: post;
+            content: counter(post);
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: calc(0.8 * .005 * 100vw + .917rem);
+        }
+
+        time {
+            color: #838383;
+            font-size: 90%;
+        }
+    }
+}
+
+
+.similar-post {
+    margin-top: 50px;
+
+    h5 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f83435;
+        display: inline-block;
+    }
+
+    &__item {
+        & + & {
+            margin-top: 50px;
+        }
+
+        a {
+            color: var(--color-primary);
+            transition: $transition;
+
+            &:hover {
+                opacity: .85;
+            }
+        }
+
+        .post-feed__item-date {
+            margin-left: 0;
+            margin-top: 10px;
+            display: block;
+        }
+    }
+
+    h6 {
+        font-size: calc(0.8 * .005 * 100vw + .917rem);
+        margin: 0;
+    }
+
+    time {
+        color: #838383;
+        margin-top: 5px;
+        display: block;
+        font-size: 90%;
+    }
+
+    img {
+        border-radius: 5px;
+        max-height: 100px;
+        min-width: 100%;
+    }
+}
+
+.tags-cloud {
+    margin-top: 50px;
+
+    h5 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f83435;
+        display: inline-block;
+    }
+
+    &__items {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -2px;
+        }
+
+    &__item {
+        flex: 1;
+        padding: 2px;
+
+        &-link {
+            display: block;
+            border: 2px solid #43302e;
+            white-space: pre;
+            padding: 20px;
+            color: var(--color-primary) !important;
+            transition: $transition;
+            border-radius: 5px;
+
+            &:hover {
+                opacity: .85;
+            }
+        }
+    }
+}

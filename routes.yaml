@@ -1,0 +1,28 @@
+# routes:
+#   /signup/: members\signup
+#   /signin/: members\signin
+#   /account/: members\account
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /source/{slug}/
+
+routes:
+  /editorials/:
+    controller: channel
+    filter: tag:[hash-self]
+    template: editorials
+
+  /rss/turbo-page/:
+    template: turbo-page
+    content_type: text/xml
+
+  /rss/:
+    permalink: /rss/
+    template: rss
+    content_type: text/xml

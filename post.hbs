@@ -2,75 +2,91 @@
 
 {{#post}}
 
-<article class="article-full {{post_class}}">
-    <header class="post-header">
+<article class="entry {{post_class}}">
+    <header class="entry__header wrapper">
         {{#if feature_image}}
-            <img class="post-feature-image"
-                srcset="{{img_url feature_image size="s"}} 300w,
+            <figure class="entry__feature-image">
+                <img
+                    srcset="{{img_url feature_image size="s"}} 300w,
                         {{img_url feature_image size="m"}} 600w,
                         {{img_url feature_image size="l"}} 1000w,
                         {{img_url feature_image size="xl"}} 2000w"
-                sizes="(max-width: 1000px) 1000px, 2000px"
-                loading="lazy"
-                src="{{img_url feature_image size="xl"}}"
-                alt="{{title}}"
-            />
+                        sizes="(max-width: 1000px) 1000px, 2000px"
+                        loading="lazy"
+                        src="{{img_url feature_image size="l"}}"
+                        alt="{{title}}"
+                >
+                {{#if feature_image_caption}}
+                    <figcaption>{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
         {{/if}}
 
-        <div class="post-header-content">
-            <h1 class="post-title">{{title}}</h1>
-            <time datetime="{{date format="YYYY-MM-DD"}}">{{t "Published on"}} {{date format="D MMM YYYY"}}</time>
+        <div class="entry__header-content">
+            {{#if tags}}
+                <div class="entry__header-tags">
+                    {{tags autolink="true" separator=" "}}
+                </div>
+            {{/if}}
+            <h1 class="entry__title">{{title}}</h1>
+            <p>{{excerpt}}</p>
+            <div class="post-feed__item-meta">
+                {{#primary_author}}
+                    <a class="post-feed__item-author post-author__link" href="{{url}}">
+                        {{name}}
+                    </a> ★
+                {{/primary_author}}
+                <span class="post-feed__item-date">
+                    <time datetime="{{date updated_at format="YYYY-MM-DD"}}">{{date updated_at format="DD MMMM YYYY"}}</time>
+                </span>
+            </div>
         </div>
     </header>
 
-    <div class="post-content">
-        {{content}}
-    </div>
+    <section class="entry__content">
+        <div class="entry__content-inner view">
+            {{content}}
+        </div>
+    </section>
 
-    <footer class="post-footer">
-        <div class="post-footer-row">
-            <div class="post-widget post-author-widget">
-                <span class="widget-label">{{t "Written by"}}</span>
-                {{#foreach authors}}
-                    {{> "author-card"}}
-                {{/foreach}}
-            </div>
-        </div>
-        <div class="post-footer-row">
-            {{#if tags}}
-            <div class="post-widget post-tags-widget">
-                <span class="widget-label">{{t "Published in"}}</span>
-                {{tags}}
-            </div>
-            {{/if}}
+    <footer class="entry__footer">
 
-            <div class="post-widget {{#if tags}}post-widget--align-right{{/if}} post-share-widget">
-                <span class="widget-label">{{t "Share"}}</span>
-                {{> "social-media-sharing-icons"}}
-            </div>
-        </div>
-        <div class="post-footer-row post-readmore">
-            <div class="post-widget post-readmore-widget">
-                {{#next_post}}
-                    <span class="widget-label">{{t "Next post"}}</span>
-                    <a href="{{url}}"><h4>{{title}}</h4></a>
-                {{/next_post}}
-            </div>
-            <div class="post-widget post-readmore-widget post-readmore-widget--prev">
-                {{#prev_post}}
-                    <span class="widget-label">{{t "Previous post"}}</span>
-                    <a href="{{url}}"><h4>{{title}}</h4></a>
-                {{/prev_post}}
-            </div>
-        </div>
-        {{!--  
-        <div class="post-widget post-comments-widget post-widget--no-margin">
-            If you want to embed comments, this is a good place to do it!
-        </div>
-        --}}
+        <section class="entry__footer-sharepost share-post view">
+            {{> "parts/share-post"}}
+        </section>
+
+        {{> "parts/comments"}}
+
+        {{#match @custom.banners "Both"}}
+            <section class="banners">
+                <div class="banners__inner wrapper">
+                    {{> "parts/tg-banner"}}
+                    {{> "parts/donate-banner"}}
+                </div>
+            </section>
+        {{/match}}
+        {{#match @custom.banners "Telegram"}}
+            <section class="banners">
+                <div class="banners__inner wrapper">
+                    {{> "parts/tg-banner"}}
+                </div>
+            </section>
+        {{/match}}
+        {{#match @custom.banners "Donate"}}
+            <section class="banners">
+                <div class="banners__inner wrapper">
+                    {{> "parts/donate-banner"}}
+                </div>
+            </section>
+        {{/match}}
+
+        {{> "related-posts"}}
+
+        {{> "post-slider"}}
+
     </footer>
 </article>
 
 {{/post}}
 
-{{> "subscribe-cta"}}
+{{> "parts/progress-bar"}}

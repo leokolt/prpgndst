@@ -1,44 +1,33 @@
 {{!< default}}
 
 {{#author}}
-    <header class="author-header {{#if cover_image}}author-header--with-image{{/if}}" style="background-image: url({{cover_image}});">
-        <div class="author-header-wrapper">
-            {{#if profile_image}}
-                <img class="author-header-image" src="{{profile_image}}" alt="{{name}}" />
-            {{/if}}
+    <header class="author-header">
+        <div class="author-header__inner wrapper">
 
-            <h1>{{name}}</h1>
+            <div class="author-header__content">
 
-            {{#if bio}}
-                <p>{{bio}}</p>
-            {{/if}}
+                <h1>{{name}}</h1>
 
-            {{#if location}}
-                <div class="author-header-location">
-                    <span aria-hidden="true">{{> "icons/globe"}}</span>
-                    <span>{{location}}</span>
-                </div>
-            {{/if}}
+                <span>{{plural ../pagination.total empty='' singular='%' plural='%'}}</span>
 
-            <ul class="author-header-meta social-media-icons">
-                {{#if website}}
-                    <li><a href="{{website}}" target="_blank" rel="noopener" title="{{t "Website"}}">{{> "icons/link"}}</a></li>
+                {{#if bio}}
+                    <p>{{bio}}</p>
                 {{/if}}
-                {{#if twitter}}
-                    <li><a href="{{twitter_url}}" target="_blank" rel="noopener" title="{{t "Twitter"}}">{{> "icons/twitter"}}</a></li>
-                {{/if}}
-                {{#if facebook}}
-                    <li><a href="{{facebook_url}}" target="_blank" rel="noopener" title="{{t "Facebook"}}">{{> "icons/facebook"}}</a></li>
-                {{/if}}
-            </ul>
+
+                <a href="{{website}}" target="_blank">{{website}}</a>
+
+            </div>
+
         </div>
     </header>
 {{/author}}
 
-<div class="post-feed">
-    {{#foreach posts}}
-        {{> "post-card"}}
-    {{/foreach}}
-</div>
+<section class="post-bottom">
+    <div class="post-bottom__inner wrapper">
+        {{#foreach posts}}
+            {{> "loop-bottom"}}
+        {{/foreach}}
+    </div>
+</section>
 
 {{pagination}}

@@ -1,0 +1,19 @@
+{{!< default}}
+
+
+    <header class="tag-header">
+        <div class="tag-header__inner wrapper">
+            <h1>Редакционные статьи</h1>
+        </div>
+    </header>
+
+
+<section class="post-bottom">
+    <div class="post-bottom__inner wrapper">
+        {{#foreach posts}}
+            {{> "loop-bottom"}}
+        {{/foreach}}
+    </div>
+</section>
+
+{{pagination}}

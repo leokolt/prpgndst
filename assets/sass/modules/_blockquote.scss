@@ -1,13 +1,15 @@
 blockquote {
-    font-size: 2.2rem;
-    line-height: 1.6;
-    margin: 2em 0;
-    padding-left: 1.8em;
+    font-size: calc(2 * .005 * 100vw + .917rem) !important;
+    line-height: 1.2 !important;
+    margin: 2em 0 !important;
+    padding-left: 1.8em !important;
     position: relative;
-    color: var(--color-text-secondary);
+    color: var(--color-text-bold);
+    font-style: normal !important;
+    text-align: inherit !important;
 
     &:before {
-        color: var(--color-primary);
+        color: var(--color-accent);
         content: '\201C';
         font-size: 2.5em;
         left: 0;
@@ -27,7 +29,7 @@ blockquote {
     small,
     cite {
         display: block;
-        font-size: 0.75em;
+        font-size: 0.75em !important;
         font-style: normal;
         font-weight: normal;
         line-height: 1.5;
@@ -38,7 +40,31 @@ blockquote {
         }
     }
 
-    @media (min-width: $breakpoint-xlarge) {
-        font-size: 2.4rem;
+
+}
+
+.kg-blockquote-alt {
+    padding: 30px 0 !important;
+    width: 90% !important;
+    margin: 2em auto !important;
+    font-style: normal !important;
+    text-align: inherit !important;
+
+    &:before {
+        content: '';
+        border-top: 5px solid var(--color-accent);
+        position: absolute;
+        top: 0;
+        width: 50%;
+        left: 0;
+    }
+
+    &:after {
+        content: '';
+        border-top: 5px solid var(--color-accent);
+        position: absolute;
+        bottom: 0;
+        width: 50%;
+        right: 0;
     }
 }

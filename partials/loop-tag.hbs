@@ -1,0 +1,27 @@
+{{#get "tags" limit='7' include='count.posts' order='count.posts desc'}}
+
+    {{#if tags}}
+
+    <div class="loop-tags__items">
+
+        {{#foreach tags}}
+
+            <div class="loop-tags__item">
+
+                <a class="loop-tags__item-link" href="{{url}}" >
+                    <h4 class="loop-tags__item-title">{{name}}</h4>
+                    <span>{{ count.posts }}</span>
+                    {{#if description}}
+                        <p class="loop-tags__item-description">{{description}}</p>
+                    {{/if}}
+                </a>
+
+            </div>
+
+        {{/foreach}}
+
+    </div>
+
+    {{/if}}
+
+{{/get}}

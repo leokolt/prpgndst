@@ -1,0 +1,48 @@
+.post-date-1 + .post-date-1 .loop-archive__label-date,
+.post-date-2 + .post-date-2 .loop-archive__label-date,
+.post-date-3 + .post-date-3 .loop-archive__label-date,
+.post-date-4 + .post-date-4 .loop-archive__label-date,
+.post-date-5 + .post-date-5 .loop-archive__label-date,
+.post-date-6 + .post-date-6 .loop-archive__label-date,
+.post-date-7 + .post-date-7 .loop-archive__label-date,
+.post-date-8 + .post-date-8 .loop-archive__label-date,
+.post-date-9 + .post-date-9 .loop-archive__label-date,
+.post-date-10 + .post-date-10 .loop-archive__label-date,
+.post-date-11 + .post-date-11 .loop-archive__label-date,
+.post-date-12 + .post-date-12 .loop-archive__label-date {
+    display: none;
+}
+
+.loop-archive {
+    padding: 0 20px;
+
+    .loop-archive__item {
+
+        &-inner {
+            display: flex;
+            margin-bottom: 20px;
+
+            time {
+                min-width: fit-content;
+                margin-right: 20px;
+                color: var(--color-primary-lighter);
+                font-size: 90%;
+            }
+        }
+
+        &-title {
+            font-size: calc(.006 * 100vw + .951rem);
+        }
+
+    }
+
+    &__label-date {
+        text-transform: capitalize;
+        font-family: var(--font-secondary);
+        color: #838383;
+        font-size: calc(0.7 * .011 * 100vw + 1.284rem);
+        font-weight: 700;
+        margin: 30px 0 20px;
+    }
+
+}

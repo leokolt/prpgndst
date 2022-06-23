@@ -1,20 +1,24 @@
 .pagination {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--color-text-secondary);
+    margin: 50px auto;
+}
 
-    a {
-        font-family: var(--font-secondary);
-        font-weight: var(--font-bold);
+.pagination__loadmore {
+    background-color: var(--color-accent);
+    color: #f1f1f1;
+    border: none;
+    padding: 10px 50px;
+    margin: 30px auto;
+    display: block;
+    cursor: pointer;
+    transition: $transition;
+    border-radius: 5px;
+
+    &:hover {
+        opacity: .9;
     }
 
-    .page-number {
-        display: none;
-        font-size: 1.7rem;
-
-        @media (min-width: $breakpoint-small) {
-            display: block;
-        }
+    &:disabled {
+        cursor: not-allowed;
+        opacity: .2;
     }
 }

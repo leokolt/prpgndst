@@ -1,0 +1,227 @@
+.page__header {
+    padding: 10px 20px 50px;
+
+    &-content {
+        text-align: center;
+    }
+}
+
+.page__content {
+    padding: 40px 20px;
+    background-color: var(--color-bg-primary);
+
+    a {
+        font-weight: 600;
+        color: var(--color-accent);
+    }
+
+    * + * {
+        margin-top: 20px;
+    }
+
+    > h2, h3, h4 {
+        margin-top: 30px;
+    }
+}
+
+.antispam {
+    display: none;
+}
+
+/* Contact Form */
+
+.contact-form {
+    margin: 30px auto;
+    position: relative;
+
+    input, textarea, select {
+        padding: 1rem;
+        transition: $transition;
+        border-radius: 5px;
+        font-family: inherit;
+        border: 1px solid #dedede;
+        outline: 0px;
+        line-height: 1.2;
+
+        &:focus {
+            box-shadow: 0 0 0 0.2rem var(--color-accent), 0 0 0 transparent; outline: 0px;
+        }
+    }
+}
+
+.form {
+    &__group {
+        margin-top: 10px;
+    }
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+
+        @media (min-width: $breakpoint-m) {
+            flex-wrap: nowrap;
+        }
+    }
+
+    &__col {
+        flex-direction: column;
+        width: 100%;
+
+        @media (min-width: $breakpoint-m) {
+            flex: 1;
+        }
+
+        & + & {
+            margin-top: 10px;
+
+            @media (min-width: $breakpoint-m) {
+                margin-left: 10px;
+                margin-top: 0;
+            }
+        }
+    }
+
+    &__control {
+        width: 100%;
+        background: var(--color-bg-primary);
+        color: var(--color-primary);
+    }
+
+    &__button {
+        width: 100%;
+        margin-top: 10px;
+        background-color: transparent;
+        border: 2px solid var(--color-accent);
+        border-radius: 5px;
+        color: var(--color-accent);
+        font-weight: 500;
+        cursor: pointer;
+        padding: 10px;
+        transition: $transition;
+
+        &:hover {
+            background-color: var(--color-accent);
+            color: #fff;
+        }
+
+    }
+
+    select {
+        background-image: linear-gradient(45deg, transparent 50%, #ff7b7b 50%),
+                          linear-gradient(135deg, #ff7b7b 50%, transparent 50%);
+        background-position: calc(100% - 25px) calc(1rem + .35rem),
+                             calc(100% - 15px) calc(1rem + .35rem), 100% 0;
+        background-size: 10px 10px, 10px 10px, 2rem 2rem;
+        background-repeat: no-repeat;
+        appearance: none;
+        width: 100%;
+    }
+
+    select:focus {
+        background-image: linear-gradient(45deg, transparent 50%, var(--color-accent) 50%),
+                          linear-gradient(135deg, var(--color-accent) 50%, transparent 50%);
+    }
+
+    p {
+        font-family: var(--font-secondary);
+        margin-top: 0;
+    }
+
+    &__success, &__failure {
+        opacity: 0;
+        transform: translateX(-120%);
+        color: green;
+        box-shadow: 2px 3px 10px rgba(0,0,0,.4);
+        position: absolute;
+        left: -10%;
+        top: 20%;
+        border-radius: 5px;
+        max-width: 300px;
+        padding: 20px 30px;
+        font-size: 90%;
+        background-color: var(--color-bg-primary);
+        transition: $transition;
+
+        &.show {
+            transform: translateX(0);
+            opacity: 1;
+            transition: $transition;
+        }
+    }
+
+    &__failure {
+        color: red;
+    }
+}
+
+
+
+.payment-card {
+    text-align: center;
+    font-size: calc(.009 * 100vw + 1.284rem);
+    margin: 50px auto;
+
+    .card-number {
+        color: var(--color-primary);
+        border-radius: 5px;
+        border: 2px solid var(--color-primary);
+        padding: 10px 20px;
+        background-color: var(--color-bg);
+        transition: $transition;
+        display: flex;
+        max-width: fit-content;
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+
+        &:hover {
+            opacity: .9;
+        }
+
+        .number {
+            border-right: 2px solid var(--color-primary);
+            padding-right: 20px;
+            font-size: 90%;
+        }
+
+        svg {
+            width: 25px;
+            height: 25px;
+            fill: var(--color-primary);
+        }
+
+    }
+}
+
+
+.nums {
+    margin-top: 0;
+    padding: 0 25px 0 20px;
+
+    svg {
+        transition: $transition;
+        position: absolute;
+        margin-top: 3%;
+
+        @media(min-width: $breakpoint-m) {
+            margin-top: 3%;
+        }
+    }
+}
+
+.copied {
+    .num-copied {
+        display: block;
+        transform: translateY(0);
+    }
+
+    .num {
+        transform: translateY(100px);
+
+    }
+}
+
+.num-copied {
+    transform: translateY(-100px);
+    transition: $transition;
+}

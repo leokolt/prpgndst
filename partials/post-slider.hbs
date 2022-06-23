@@ -1,0 +1,61 @@
+{{#get "posts" filter="featured:true" limit="12" as |featured|}}
+
+    {{#if featured}}
+
+    <section class="post-slider">
+
+        <div class="post-slider__inner">
+
+            <div class="post-slider__head wrapper">
+                <h3 class="post-slider__title ">Популярные статьи</h3>
+                <div class="post-slider__actions">
+                    <span class="post-slider__prev">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.775 3.225 0 12l8.775 8.775 1.498-1.407-6.421-6.267H24v-2.202H3.852l6.421-6.267-1.498-1.407Z"></path></svg>
+                    </span>
+                    <span class="post-slider__next">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.225 20.775 24 12l-8.775-8.775-1.498 1.407 6.421 6.267H0v2.202h20.148l-6.421 6.267 1.498 1.407Z"></path></svg>
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="post-slider__posts ">
+
+                {{#foreach featured}}
+
+                    <article class="post-slider__item {{post_class}} slide-{{@number}}">
+                        {{#if feature_image}}
+                        <a class="post-feed__item-imagewrap--slider" href="{{url}}">
+                            <img class="post-slider__item-image"
+                                srcset="{{img_url feature_image size="s"}} 300w,
+                                        {{img_url feature_image size="m"}} 600w,
+                                        {{img_url feature_image size="l"}} 1000w,
+                                        {{img_url feature_image size="xl"}} 2000w"
+                                sizes="(max-width: 600px) 400px, 700px"
+                                src="{{img_url feature_image size="m"}}"
+                                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                                loading="lazy"
+                            />
+                        </a>
+                        {{/if}}
+
+                        <div class="post-slider__item-content">
+                            <a class="post-slider__item-link" href="{{url}}">
+                                <h2 class="post-slider__item-title">{{title}}</h2>
+                            </a>
+                            <div class="post-slider__item-meta">
+                                <span class="post-slider__item-date">
+                                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                {{/foreach}}
+
+            </div>
+        </div>
+    </section>
+
+    {{/if}}
+{{/get}}

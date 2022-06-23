@@ -1,11 +1,10 @@
 {
-    "name": "stylesheets-ghost-theme-starter",
-    "description": "Ghost handlebars theme starter by Stylesheets.dev",
-    "demo": "https://demo.stylesheets.dev",
-    "version": "1.0.0",
+    "name": "prpgndst",
+    "description": "propagandist.media",
+    "demo": "https://propagandist.media",
+    "version": "1.0.5",
     "engines": {
-        "ghost": ">=4.0.0",
-        "ghost-api": "v4"
+        "ghost": ">=4.0.0"
     },
     "screenshots": {
         "desktop": "assets/screenshot-desktop.jpg"
@@ -20,9 +19,9 @@
         "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi"
     },
     "author": {
-        "name": "Stylesheets.dev",
-        "email": "support@stylesheets.dev",
-        "url": "https://stylesheets.dev"
+        "name": "prpgndst",
+        "email": "contact@propagandist.media",
+        "url": "https://propagandist.media"
     },
     "gpm": {
         "type": "theme",
@@ -66,7 +65,7 @@
         "defaults"
     ],
     "config": {
-        "posts_per_page": 15,
+        "posts_per_page": 18,
         "image_sizes": {
             "xxs": {
                 "width": 30
@@ -85,6 +84,59 @@
             },
             "xl": {
                 "width": 2000
+            }
+        },
+        "card_assets": true,
+        "custom": {
+            "top_post": {
+                "type": "boolean",
+                "default": false,
+                "group": "homepage"
+            },
+            "comment_on_post": {
+                "type": "boolean",
+                "default": false,
+                "group": "post"
+            },
+            "contact_email": {
+                "type": "text",
+                "default": "contact@propagandist.media",
+                "group": "post"
+            },
+            "banners": {
+                "type": "select",
+                "options": ["Both", "Telegram", "Donate"],
+                "default": "Both"
+            },
+            "card_number": {
+                "type": "text",
+                "default": "2202202280741723",
+                "group": "post"
+            },
+            "topic": {
+                "type": "text",
+                "group": "homepage",
+                "default": false
+            },
+            "topic_tags": {
+                "type": "text",
+                "group": "homepage",
+                "default": false
+            },
+            "topic_background_image": {
+                "type": "image",
+                "group": "homepage",
+                "default": false
+            },
+            "tags_posts": {
+                "type": "text",
+                "group": "homepage",
+                "default": false
+            },
+            "source_exclude": {
+                "type": "text",
+                "group": "homepage",
+                "default": false
             }
         }
     },

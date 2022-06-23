@@ -1,0 +1,120 @@
+.banners {
+    padding: 0 20px;
+
+    &__inner {
+        display: flex;
+        margin-top: 30px;
+        flex-wrap: wrap;
+
+        @media(min-width: $breakpoint-m) {
+            flex-wrap: nowrap;
+        }
+
+        & > * {
+            flex: 1;
+
+            & + * {
+                margin-left: 0;
+                margin-top: 20px;
+
+                @media(min-width: $breakpoint-m) {
+                    margin-left: 30px;
+                    margin-top: 0;
+                }
+            }
+        }
+
+    }
+
+}
+
+[color-mode="dark"] {
+    .tg-banner, .donate-banner {
+        filter: brightness(0.5);
+    }
+}
+
+.tg-banner, .donate-banner {
+    background-color: #b4e6ff;
+    border-radius: 5px;
+    padding: 30px;
+    display: block;
+    transition: $transition;
+
+    &:hover {
+        opacity: .9;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        margin-right: 15px;
+
+        @media(min-width: $breakpoint-m) {
+            margin-right: 30px;
+        }
+
+        svg {
+            width: 100px;
+            height: 100px;
+            fill: #43302e;
+        }
+    }
+
+    &__content {
+        h4 {
+            color: #43302e;
+            word-break: break-word;
+        }
+    }
+
+}
+
+.donate-banner {
+    background-color: #ffbcbc;
+
+    svg path:nth-child(2) {
+        stroke: #43302e;
+    }
+}
+
+
+.entry--sidebar {
+    .banners {
+        padding: 0;
+    }
+
+    .banners__inner {
+        display: flex;
+        margin-top: 30px;
+        flex-wrap: wrap;
+
+        > * {
+            flex: 100%;
+        }
+
+        .donate-banner__logo, .tg-banner__logo {
+            margin-right: 15px;
+        }
+
+        .donate-banner__logo svg, .tg-banner__logo svg {
+            width: 70px;
+            height: 70px;
+            fill: #43302e;
+        }
+
+        .tg-banner__content h4, .donate-banner__content h4 {
+            font-size: calc(.005 * 100vw + 1.15rem);
+            margin-top: 0;
+        }
+
+        > * + * {
+            margin-left: 0;
+            margin-top: 30px;
+        }
+
+    }
+}

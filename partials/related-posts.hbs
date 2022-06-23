@@ -1,0 +1,27 @@
+{{!-- Related Posts --}}
+
+{{#get "posts" include="tags" limit="6" filter="id:-{{id}}+tag:{{primary_tag.slug}}" as |related|}}
+
+{{#if related}}
+
+<section class="related-posts">
+
+	{{!-- {{#../primary_tag}}
+		<h3 class="related-posts__title">Другие статьи по теме "{{name}}"</h3>
+	{{/../primary_tag}} --}}
+
+	<div class="related-posts__inner wrapper">
+
+		{{#foreach related}}
+
+			{{> "loop-top"}}
+
+		{{/foreach}}
+
+	</div>
+
+</section>
+
+{{/if}}
+
+{{/get}}

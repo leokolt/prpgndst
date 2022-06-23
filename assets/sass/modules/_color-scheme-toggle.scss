@@ -1,42 +1,97 @@
-.color-scheme-toggle {
-    background: none;
-    border: none;
-    display: block;
-    padding: 10px;
-    margin: -10px;
-    cursor: pointer;
-    color: var(--color-primary);
-    border-radius: 100%;
+/*dark mode*/
+.head__nightshift-toggle {
+	border-radius: 999px;
+	transition: all .3s ease-in-out;
+	position: relative;
+	height: 22px;
+	width: 42px;
+	background: #15171a;
+	cursor: pointer;
+	border-radius: 999px;
+	transition: all .3s ease-in-out;
 
-    &:hover,
-    &:focus {
-        background: var(--color-bg-secondary);
-        outline: none;
-    }
+	.thumb {
+		border-radius: 999px;
+		transition: all .3s ease-in-out;
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: 18px;
+		height: 18px;
+		background-color: #fff;
+		border-radius: 999px;
+		transition: all .3s ease-in-out;
+	}
 
-    svg {
-        width: 100%;
-        height: 100%;
-    }
+	.moon {
+		position: absolute;
+		color: #fff;
+		line-height: 20px;
+		left: 6px;
+
+        @media (max-width: $breakpoint-m) {
+            line-height: 22px;
+        }
+
+		svg {
+			width: 12px;
+			height: 10px;
+			transition: all .3s ease-in-out;
+			path {
+				stroke-width: 2px;
+			}
+		}
+	}
+
+	.sun {
+		position: absolute;
+		color: #fff;
+		line-height: 20px;
+		right: 6px;
+
+        @media (max-width: $breakpoint-m) {
+            line-height: 22px;
+        }
+
+		svg {
+			width: 12px;
+			height: 10px;
+			transition: all .3s ease-in-out;
+			circle {
+				stroke-width: 2px;
+			}
+			line {
+				stroke-width: 2px;
+			}
+			path {
+				stroke-width: 2px;
+			}
+		}
+	}
 }
 
-.color-scheme-icons {
-    display: block;
-    position: relative;
-    width: 25px;
-    height: 25px;
+.sun_svg__a {
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.5px;
 }
 
-.color-scheme-icon {
-    width: 25px;
-    height: 25px;
-    opacity: 0;
-    transition: all 0.4s;
-    position: absolute;
-    top: 0;
-    left: 0;
+[color-mode="dark"] {
+	.head__nightshift-toggle {
+		.thumb {
+			position: absolute;
+			left: 22px;
+			top: 2px;
+		}
+	}
 
-    &.is-active {
-        opacity: 1;
-    }
+	.entry__footer-comment--dark {
+		display: block;
+	}
+
+	.entry__footer-comment--light {
+		display: none;
+	}
 }

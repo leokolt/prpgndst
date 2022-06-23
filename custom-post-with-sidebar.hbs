@@ -1,0 +1,98 @@
+{{!< default}}
+
+{{#post}}
+
+<article class="entry entry--sidebar {{post_class}}">
+
+    <header class="entry__header view">
+        <div class="entry__header-content">
+            {{#if tags}}
+                <div class="entry__header-tags">
+                    {{tags autolink="true" separator=" "}}
+                </div>
+            {{/if}}
+            <h1 class="entry__title">{{title}}</h1>
+            <div class="post-feed__item-meta">
+                {{#primary_author}}
+                    <a class="post-feed__item-author post-author__link" href="{{url}}">
+                        {{name}}
+                    </a> ★
+                {{/primary_author}}
+                <span class="post-feed__item-date">
+                    <time datetime="{{date updated_at format="YYYY-MM-DD"}}">{{date updated_at format="DD MMMM YYYY"}}</time>
+                </span>
+            </div>
+        </div>
+
+        {{#if feature_image}}
+            <figure class="entry__feature-image">
+                <img
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                        sizes="(max-width: 1000px) 1000px, 2000px"
+                        loading="lazy"
+                        src="{{img_url feature_image size="l"}}"
+                        alt="{{title}}"
+                >
+                {{#if feature_image_caption}}
+                    <figcaption>{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
+        {{/if}}
+    </header>
+
+    <section class="entry__content">
+        <div class="entry__content-inner wrapper">
+            <div class="entry__content-main">
+                {{content}}
+            </div>
+            <aside class="entry__content-sidebar">
+                <div class="entry__content-sidebar__inner">
+                    {{> "parts/latest-posts"}}
+                    {{#match @custom.banners "Both"}}
+                        <section class="banners">
+                            <div class="banners__inner wrapper">
+                                {{> "parts/tg-banner"}}
+                                {{> "parts/donate-banner"}}
+                            </div>
+                        </section>
+                    {{/match}}
+                    {{#match @custom.banners "Telegram"}}
+                        <section class="banners">
+                            <div class="banners__inner wrapper">
+                                {{> "parts/tg-banner"}}
+                            </div>
+                        </section>
+                    {{/match}}
+                    {{#match @custom.banners "Donate"}}
+                        <section class="banners">
+                            <div class="banners__inner wrapper">
+                                {{> "parts/donate-banner"}}
+                            </div>
+                        </section>
+                    {{/match}}
+                    {{> "parts/similar-posts"}}
+                    {{> "parts/tags-cloud"}}
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <footer class="entry__footer">
+
+        <section class="entry__footer-sharepost share-post view">
+            {{> "parts/share-post"}}
+        </section>
+
+        {{> "parts/comments"}}
+
+        {{> "post-slider"}}
+
+    </footer>
+</article>
+
+{{/post}}
+
+{{> "parts/progress-bar"}}

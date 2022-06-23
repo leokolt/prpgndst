@@ -1,0 +1,29 @@
+{{#if tags}}
+    {{#foreach tags}}
+    <div class="tags-posts__column">
+        <header class="tags-posts__header">
+            <h2 class="tags-posts__name">
+                <a href="{{url}}">{{name}}</a>
+            </h2>
+            <a class="tags-posts__link" href="{{url}}">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.225 20.775 24 12l-8.775-8.775-1.498 1.407 6.421 6.267H0v2.202h20.148l-6.421 6.267 1.498 1.407Z"></path></svg>
+            </a>
+        </header>
+
+        <div class="tags-posts__content">
+            {{#get "posts" include="tags,authors" filter="tag:{{slug}}" limit="5"}}
+                {{#foreach posts}}
+                    <article class="tags-posts__item {{post_class}}">
+                        <a class="tags-posts__item-link" href="{{url}}">
+                            <h3 class="tags-posts__item-title">{{title}}</h3>
+                        </a>
+                        <span class="post-feed__item-date">
+                            <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+                        </span>
+                    </article>
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </div>
+    {{/foreach}}
+{{/if}}

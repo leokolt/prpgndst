@@ -1,62 +1,87 @@
 <!DOCTYPE html>
 <html lang="{{@site.locale}}">
+    <head>
+        <title>{{meta_title}}</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="{{asset "built/main.css"}}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{{asset "built/images/apple-touch-icon.png"}}">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="{{asset "built/images/safari-pinned-tab.svg"}}" color="#f83435">
+        <meta name="msapplication-TileColor" content="#121212">
+        <meta name="theme-color" content="#ffffff">
 
-<head>
-    <title>{{meta_title}}</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Work+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset "built/main.css"}}" />
-    
-    <script>
-        if (localStorage.getItem('colorScheme')) {
-            document.documentElement.classList.add('color-scheme--' + localStorage.getItem('colorScheme'));
-        }
-    </script>
-
-    {{ghost_head}}
-</head>
-
-<body class="{{body_class}}">
-    <a href="#main" class="skip-link">{{t "Skip to content"}}</a>
-
-    <div class="site-wrapper">
-        {{> "header"}}
-
-        <main id="main" class="site-main">
-            {{{body}}}
-        </main>
-
-        {{> "footer"}}
-    </div>
-
-    <script src="{{asset "built/jquery-3.4.1.min.js"}}"></script>
-    <script src="{{asset "built/prism.js"}}"></script>
-    <script src="{{asset "built/main.js"}}"></script>
-    
-    {{#is "post, page"}}
-        <script src="{{asset "built/jquery.fitvids.js"}}"></script>
         <script>
-            var images = document.querySelectorAll('.kg-gallery-image img');
-            images.forEach(function (image) {
-                var container = image.closest('.kg-gallery-image');
-                var width = image.attributes.width.value;
-                var height = image.attributes.height.value;
-                var ratio = width / height;
-                container.style.flex = ratio + ' 1 0%';
-            });
-            $(document).ready(function () {
-                var $postContent = $(".post-content");
-                $postContent.fitVids();
+            let theme = localStorage.getItem('mode') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute("color-mode", theme);
+        </script>
+
+        {{#is "home"}}
+            <script>
+                let frontState = localStorage.getItem('front-state')  === 'archive' ? 'archive' : 'section';
+                document.documentElement.setAttribute("front-page", frontState)
+            </script>
+        {{/is}}
+
+        {{ghost_head}}
+    </head>
+
+    <body class="{{body_class}}">
+
+        {{> "parts/preloader"}}
+
+        <div class="viewport">
+            {{> "header"}}
+
+            <main class="site-main">
+                {{{body}}}
+            </main>
+
+            {{> "footer"}}
+        </div>
+
+        {{ghost_foot}}
+
+        <script src="{{asset "built/global.js"}}"></script>
+
+        {{#is "post"}}
+            <script src="{{asset "built/post.js"}}"></script>
+        {{/is}}
+
+        {{#is "home"}}
+            <script src="{{asset "built/home.js"}}"></script>
+        {{/is}}
+
+        {{#is "tag, author, editorials"}}
+            <script src="{{asset "built/index.js"}}"></script>
+        {{/is}}
+
+        {{{block "scripts-donate"}}}
+
+        {{>"search"}}
+
+        <script>
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded__hiding');
+                window.setTimeout(function () {
+                    document.body.classList.add('loaded');
+                    document.body.classList.remove('loaded__hiding');
+                }, 500);
             });
         </script>
-    {{/is}}
 
-    {{ghost_foot}}
-</body>
+        {{!-- Service Worker for PWA --}}
+        <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js');
+            });
+        }
+        </script>
 
+        {{>"parts/cookie-alert"}}
+
+    </body>
 </html>

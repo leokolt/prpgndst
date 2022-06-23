@@ -1,0 +1,44 @@
+{{#get "posts" include="tags" limit="6" filter="id:-{{id}}+tag:{{primary_tag.slug}}" as |similar|}}
+
+{{#if similar}}
+
+	<section class="similar-post">
+        <h5>Похожие статьи</h5>
+
+			{{#foreach similar}}
+
+                <article class="similar-post__item">
+
+                    {{#if feature_image}}
+                    <a class="post-feed__item-imagewrap" href="{{url}}">
+                        <img class="post-feed__item-image"
+                            srcset="{{img_url feature_image size="s"}} 300w,
+                                    {{img_url feature_image size="m"}} 600w,
+                                    {{img_url feature_image size="l"}} 1000w,
+                                    {{img_url feature_image size="xl"}} 2000w"
+                            sizes="(max-width: 1000px) 400px, 700px"
+                            src="{{img_url feature_image size="m"}}"
+                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                            loading="lazy"
+                        />
+                    </a>
+                    {{/if}}
+
+                    <span class="post-feed__item-date">
+					    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+				    </span>
+
+            		<h6 class="latest-post__title">
+					    <a href="{{url}}">{{title}}</a>
+				    </h6>
+
+
+                </article>
+
+			{{/foreach}}
+
+	</section>
+
+{{/if}}
+
+{{/get}}

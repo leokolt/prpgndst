@@ -1,0 +1,121 @@
+{{!< default}}
+
+{{#post}}
+
+<article class="page {{post_class}}">
+    <header class="page__header wrapper">
+        {{#if feature_image}}
+            <img class="page__feature-image"
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(max-width: 1000px) 1000px, 2000px"
+                loading="lazy"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{title}}"
+            />
+        {{/if}}
+
+        <div class="page__header-content">
+            <h1 class="page__title">{{title}}</h1>
+        </div>
+    </header>
+
+    <section class="page__content">
+        <div class="page__content-inner view">
+            <p>Привет. Если у вас есть вопрос, или предложение к редакции <b>Пропагандиста</b>, напишите нам на почту <a href="mailto:contact@propagandist.media"><span class="antispam">smert</span>cont<span class="antispam">botam</span>act@propagandist.media</a> или заполните контакную форму ниже</p>
+
+            <div class="contact-form form">
+                <form>
+                    <div class="form__group">
+                        <div class="form__row">
+                            <div class="form__col">
+                                <input type="text" name="name" class="form__control name" placeholder="Ваше имя" required>
+                                <input type="text" name="_honey" style="display:none">
+                            </div>
+                            <div class="form__col">
+                                <input type="email" name="email" class="form__control email" placeholder="Ваш Email" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__row">
+                                <select class="form__control select" name="theme">
+                                    <option selected disabled value="Без темы">Выберите тип обращения</option>
+                                    <option value="Просьба">Вопрос</option>
+                                    <option value="Благодарность">Благодарность</option>
+                                    <option value="Предложение">Предложение</option>
+                                    <option value="Жалоба">Жалоба</option>
+                                    <option value="Пожелание">Пожелание</option>
+                                    <option value="Комментарий">Комментарий</option>
+                                    <option value="Нарушение">Нарушение</option>
+                                    <option value="Ошибка">Ошибка</option>
+                                </select>
+                           </div>
+                    </div>
+                    <div class="form__group">
+                        <textarea placeholder="Ваше сообщение" class="form__control text" name="message" rows="10" required></textarea>
+                    </div>
+                    <button type="submit" class="form__button">Отправить</button>
+                    <input type="hidden" name="_captcha" value="false">
+                </form>
+                <br>
+                <p class="form__privacy-accept">Нажимая на кнопку "Отправить" вы соглашаетесь с <a href="/privacy" target="_blank">нашей политикой</a> в отношении обработки персональных данных</p>
+                <p class="form__success">Спасибо за обратную связь! Если ваш запрос требует ответа, мы обязательно сделаем это</p>
+                <p class="form__failure">Произошла неприятность! Попробуйте отправить сообщение снова</p>
+            </div>
+
+
+        </div>
+    </section>
+</article>
+
+<script>
+    document.querySelector('.form__button').addEventListener('click', (e) => {
+        let isFormValid = document.querySelector('.contact-form form').checkValidity();
+        if(!isFormValid) {
+            document.querySelector('.contact-form form').reportValidity();
+        } else {
+            e.preventDefault();
+
+            fetch("https://formsubmit.co/ajax/{{#if @custom.contact_email}}{{@custom.contact_email}}{{/if}}", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: document.querySelector('.form__control.name').value,
+                    email: document.querySelector('.form__control.email').value,
+                    theme: document.querySelector('.form__control.select').value,
+                    message: document.querySelector('.form__control.text').value
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .then(() => {
+                document.querySelector('.form__success').classList.add('show');
+                setTimeout(() => {
+                    document.querySelector('.form__success').classList.remove('show');
+                }, 5000);
+                document.querySelector('.form__control.name').value = '',
+                document.querySelector('.form__control.email').value = '',
+                document.querySelector('.form__control.select').value = 'Без темы',
+                document.querySelector('.form__control.text').value = '';
+            })
+            .catch(error => console.log(error))
+            .catch(() => {
+                document.querySelector('.form__failure').classList.add('show');
+                setTimeout(() => {
+                    document.querySelector('.form__failure').classList.remove('show');
+                }, 5000);
+            })
+        }
+    })
+
+
+
+</script>
+
+{{/post}}

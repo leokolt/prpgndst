@@ -1,0 +1,79 @@
+{{!< default}}
+
+{{#post}}
+
+<article class="entry entry--fullimage {{post_class}}">
+
+    <header class="entry__header" {{#if feature_image}}style="background-image: url({{img_url feature_image size="l"}})"{{/if}}>
+
+        <div class="entry__header-content wrapper">
+            {{#if tags}}
+                <div class="entry__header-tags">
+                    {{tags autolink="true" separator=" "}}
+                </div>
+            {{/if}}
+            <h1 class="entry__title">{{title}}</h1>
+            <div class="post-feed__item-meta">
+                {{#primary_author}}
+                    <a class="post-feed__item-author post-author__link" href="{{url}}">
+                        {{name}}
+                    </a> ★
+                {{/primary_author}}
+                <span class="post-feed__item-date">
+                    <time datetime="{{date updated_at format="YYYY-MM-DD"}}">{{date updated_at format="DD MMMM YYYY"}}</time>
+                </span>
+            </div>
+            <p>{{excerpt}}</p>
+        </div>
+
+
+    </header>
+
+    <section class="entry__content">
+        <div class="entry__content-inner view">
+            {{content}}
+        </div>
+    </section>
+
+    <footer class="entry__footer">
+
+        <section class="entry__footer-sharepost share-post view">
+            {{> "parts/share-post"}}
+        </section>
+
+        {{> "parts/comments"}}
+
+        {{#match @custom.banners "Both"}}
+            <section class="banners">
+                <div class="banners__inner wrapper">
+                    {{> "parts/tg-banner"}}
+                    {{> "parts/donate-banner"}}
+                </div>
+            </section>
+        {{/match}}
+        {{#match @custom.banners "Telegram"}}
+            <section class="banners">
+                <div class="banners__inner wrapper">
+                    {{> "parts/tg-banner"}}
+                </div>
+            </section>
+        {{/match}}
+        {{#match @custom.banners "Donate"}}
+            <section class="banners">
+                <div class="banners__inner wrapper">
+                    {{> "parts/donate-banner"}}
+                </div>
+            </section>
+        {{/match}}
+
+        {{> "related-posts"}}
+
+        {{> "post-slider"}}
+
+    </footer>
+
+</article>
+
+{{/post}}
+
+{{> "parts/progress-bar"}}

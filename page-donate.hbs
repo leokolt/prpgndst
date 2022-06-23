@@ -1,0 +1,76 @@
+{{!< default}}
+
+{{#post}}
+
+<article class="page {{post_class}}">
+    <header class="page__header wrapper">
+        {{#if feature_image}}
+            <img class="page__feature-image"
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(max-width: 1000px) 1000px, 2000px"
+                loading="lazy"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{title}}"
+            />
+        {{/if}}
+
+        <div class="page__header-content">
+            <h1 class="page__title">{{title}}</h1>
+        </div>
+    </header>
+
+    <section class="page__content">
+        <div class="page__content-inner view">
+            <p>
+                Привет. Наш проект с самого своего зарождения <b>не имеет никакого источника</b> финансирования, кроме личных средств редакции, а также добровольных пожертвований пользователей сайта. Мы не размещаем рекламу и платных материалов, поэтому надеемся на вас, <b>дорогие друзья</b>.
+            </p>
+            <p>
+                Чтобы сделать перевод <b>скопируйте ниже код карты Мир Сбербанка</b>, или заполните форму платежного сервиса Юmoney. Мы рады и благодарны любым суммам, разовым и постоянным платежам, которые вы можете настроить в онлайн-сервисе или мобильном приложении своего банка. А если у вас возникли вопросы, напишите нам, используя форму <a href="/contact" target="_blank">на этой странице</a>.
+            </p>
+
+            <div class="payment-card card">
+                <a class="card-number">
+                    <span class="number">{{#if @custom.card_number}}{{@custom.card_number}}{{/if}}</span>
+                    <span class="nums">
+                        <svg class="num-copied" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M9 16.2l-3.5-3.5c-.39-.39-1.01-.39-1.4 0-.39.39-.39 1.01 0 1.4l4.19 4.19c.39.39 1.02.39 1.41 0L20.3 7.7c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0L9 16.2z"/></svg>
+
+                        <svg class="num" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 460" style="enable-background:new 0 0 460 460" xml:space="preserve"><path d="M425.934 0H171.662c-18.122 0-32.864 14.743-32.864 32.864v77.134h30V32.864A2.868 2.868 0 0 1 171.662 30h254.272a2.868 2.868 0 0 1 2.864 2.864v254.272a2.868 2.868 0 0 1-2.864 2.865h-74.729v30h74.729c18.121 0 32.864-14.743 32.864-32.865V32.864C458.797 14.743 444.055 0 425.934 0z"/><path d="M288.339 139.998H34.068c-18.122 0-32.865 14.743-32.865 32.865v254.272C1.204 445.257 15.946 460 34.068 460H288.34c18.122 0 32.865-14.743 32.865-32.864V172.863c.001-18.122-14.744-32.865-32.866-32.865zM288.341 430H34.068a2.868 2.868 0 0 1-2.865-2.864V172.863a2.868 2.868 0 0 1 2.865-2.865H288.34a2.868 2.868 0 0 1 2.865 2.865v254.273h.001a2.868 2.868 0 0 1-2.865 2.864z"/></svg>
+                    </span>
+                </a>
+                <input type="text" value="{{#if @custom.card_number}}{{@custom.card_number}}{{/if}}" class="input-link">
+            </div>
+
+            <div class="payment-form">
+                <iframe src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9D%D0%B0%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20%22%D0%9F%D1%80%D0%BE%D0%BF%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B8%D1%81%D1%82%D0%B0%22&default-sum=500&button-text=12&successURL=&quickpay=shop&account=4100117764019815&" width="100%" height="222" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            </div>
+        </div>
+    </section>
+</article>
+
+{{/post}}
+
+{{#contentFor "scripts-donate"}}
+    <script>
+        /* Copy link in share buttons block */
+        const copyLinkBtn = document.querySelector('.card-number'),
+        inputValue = document.querySelector('.input-link');
+
+        copyLinkBtn.addEventListener('click', () => {
+            window.navigator.clipboard.writeText(inputValue.value);
+            copyLinkBtn.classList.add('copied');
+            setTimeout(() => {
+                copyLinkBtn.classList.remove('copied');
+            }, 5000);
+        });
+
+        /*cardnum*/
+        let cardNum = document.querySelector('.number');
+
+        let cardNumChange = cardNum.textContent.replace(/(\d)(?=(\d{4})+(\D|$))/g, '$1 ');
+
+        cardNum.innerHTML = cardNumChange;
+    </script>
+{{/contentFor}}

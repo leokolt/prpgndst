@@ -1,16 +1,38 @@
-<footer class="site-footer">
-    <div class="site-footer-top">
-        {{#if @site.secondary_navigation}}
-            {{navigation type="secondary"}}
-        {{/if}}
-    </div>
-    
-    <div class="site-footer-bottom">
-        <div class="copyright">
-            &copy; {{date format="YYYY"}} {{@site.title}} 
+<footer class="foot">
+    <div class="foot__inner wrapper">
+        <div class="foot__brand">
+            <a class="foot__logo" href="{{@site.url}}">
+                <p class="foot__brand-title">{{@site.title}}</p>
+            </a>
+            <a class="donate" href="/donate" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="none" d="M0 0h256v256H0z"/><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" d="M56 184h88M88 216V40h60a52 52 0 0 1 0 104H56"/></svg>
+                <span>Поддержать</span>
+            </a>
+            <a class="tg" href="https://t.me/propagandistmedia" target="_blank" role="button">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                <span>Telegram</span>
+            </a>
+            <a class="rss" href="/rss" target="_blank" role="button">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>RSS</title><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg>
+                <span>RSS</span>
+            </a>
         </div>
-        <div class="attribution">
-            {{t "Published with"}} <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> &amp; <a href="https://stylesheets.dev/themes/ghost/sapphire/" target="_blank">Sapphire</a>
+        <div class="foot__content">
+            <div class="foot__menu">
+                <ul class="nav">
+                    <li><a href="/contact/">Контакты</a></li>
+                    <li><a href="/privacy/">Политика конфиденциальности</a></li>
+                </ul>
+            </div>
+            <p>
+                Все материалы, опубликованные на этом сайте, были разрешены авторами и правообладателями к цитированию и перепечатке по умолчанию, либо по запросу редакции сайта "Пропагандист". Цитирование материалов из раздела "Статьи редакции" разрешено, полная или частичная (более 20% от статьи) их перепечатка разрешена с указанием автора и прямой индексируемой ссылки на материал. Для связи с редакцией используйте страницу "Контакты". Мнение редакции может не совпадать с мнением авторов материалов. Некоторые материалы могут относиться к категории "18+"
+            </p>
         </div>
     </div>
+    <div class="foot__copyright">
+        <p class="foot__copyright-text wrapper">
+            {{@site.title}} © {{date format="YYYY"}}. Все права защищены
+        </p>
+    </div>
+
 </footer>

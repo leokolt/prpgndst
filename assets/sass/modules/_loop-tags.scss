@@ -1,0 +1,107 @@
+.loop-tags {
+    margin-top: 50px;
+    background-color: var(--color-bg-primary);
+    padding: 50px 0;
+
+    @media (min-width: $breakpoint-xl) {
+        padding: 50px 20px;
+    }
+
+    &__title {
+        font-family: var(--font-secondary);
+        color: var(--color-accent);
+        font-size: calc(.77vw + 1.284rem);
+        margin-bottom: 30px;
+        margin-left: 20px;
+
+        @media (min-width: $breakpoint-xl) {
+            margin-left: 0;
+        }
+    }
+
+    &__items {
+        display: flex;
+        //flex-wrap: wrap;
+        scroll-snap-type: mandatory;
+        overflow-x: scroll;
+        -webkit-scroll-snap-type: x mandatory;
+        -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        scroll-padding: 20px;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (min-width: $breakpoint-xl) {
+            overflow-x: hidden;
+            scroll-snap-type: unset;
+            flex-wrap: wrap;
+        }
+
+    }
+
+    &__item {
+        border: 2px solid #43302e;
+        padding: 30px;
+        margin-bottom: 30px;
+        min-width: 80%;
+        scroll-snap-align: start;
+        scroll-margin: 20px;
+        border-radius: 5px;
+
+        @media (min-width: $breakpoint-xl) {
+            flex: 1 1 calc(25% - 30px);
+            min-width: unset;
+            scroll-snap-align: unset;
+        }
+
+        & + & {
+            margin-left: 20px;
+        }
+
+        @media (min-width: $breakpoint-xl) {
+            &:nth-child(5) {
+                margin-left: 0;
+            }
+        }
+
+        &-title {
+            display: inline;
+        }
+
+        &-link span {
+            vertical-align: top;
+            color: var(--color-accent);
+        }
+
+        &-description {
+            font-size: 90%;
+            margin-top: 20px;
+        }
+
+        &:first-child {
+            margin-left: 20px;
+
+            @media (min-width: $breakpoint-xl) {
+                margin-left: 0;
+            }
+        }
+
+        &:last-child {
+            margin-right: 20px;
+
+            @media (min-width: $breakpoint-xl) {
+                margin-right: 0;
+            }
+        }
+
+    }
+
+}

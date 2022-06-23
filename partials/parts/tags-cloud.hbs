@@ -1,0 +1,27 @@
+{{#get "tags" limit='7' include='count.posts' order='count.posts desc'}}
+
+    {{#if tags}}
+
+    <div class="tags-cloud">
+
+        <h5>Важные темы</h5>
+
+            <div class="tags-cloud__items">
+
+                {{#foreach tags}}
+
+                    <div class="tags-cloud__item">
+
+                        <a class="tags-cloud__item-link" href="{{url}}">{{name}}</a>
+
+                    </div>
+
+                {{/foreach}}
+
+            </div>
+
+    </div>
+
+    {{/if}}
+
+{{/get}}

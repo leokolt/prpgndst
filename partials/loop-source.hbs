@@ -1,0 +1,58 @@
+{{#if @custom.source_exclude}}
+
+{{#get "authors" limit='20' filter='slug:-[{{@custom.source_exclude}}]' include='count.posts' order='count.posts desc'}}
+
+{{#if authors}}
+
+<div class="loop-source__items">
+
+    {{#foreach authors}}
+
+    <div class="loop-source__item">
+
+        <a class="loop-source__item-link" href="{{url}}" >
+            <h4 class="loop-source__item-title">{{name}}</h4>
+        </a>
+
+    </div>
+
+    {{/foreach}}
+
+</div>
+
+<div class="loop-source__dots"></div>
+
+{{/if}}
+
+{{/get}}
+
+{{else}}
+
+{{#get "authors" limit='12' include='count.posts' order='count.posts desc'}}
+
+{{#if authors}}
+
+<div class="loop-source__items">
+
+    {{#foreach authors}}
+
+    <div class="loop-source__item">
+
+        <a class="loop-source__item-link" href="{{url}}" >
+            <h4 class="loop-source__item-title">{{name}}</h4>
+        </a>
+
+    </div>
+
+    {{/foreach}}
+
+</div>
+
+<div class="loop-source__dots"></div>
+
+{{/if}}
+
+{{/get}}
+
+
+{{/if}}
