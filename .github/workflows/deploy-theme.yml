@@ -11,5 +11,5 @@ jobs:
       - name: Git local
         uses: TryGhost/action-deploy-theme@v1.4.0
         with:
-          api-url: $
-          api-key: $
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
